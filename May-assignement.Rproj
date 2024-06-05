@@ -1,13 +1,78 @@
-Version: 1.0
+install.packages("ggplot2")
+install.packages("plotly")
+library(ggplot2)
+library(plotly)
+data(airquality)
+mydat<-data.frame(airquality) 
+head(mydat)
+#################
+fig1 <- plot_ly(x = ~mydat$Ozone, type = "histogram")
+fig1
+##############################
+fig2 <- plot_ly(x = ~mydat$Solar.R, type = "histogram")
+fig2
+###############
+fig <- plot_ly(alpha = 0.6) 
+fig <- fig %>% 
+  add_histogram(x = 
+                  ~rnorm(500)) fig <- fig %>% 
+  add_histogram(x = ~rnorm(500) 
+                + 1) fig <- fig %>% 
+  layout(barmode = "stack") 
+fig
 
-RestoreWorkspace: Default
-SaveWorkspace: Default
-AlwaysSaveHistory: Default
+####################################
+library(ggplot2)
+library(plotly)
+data(airquality)
+mydat<-data.frame(airquality) 
+head(mydat)
+library(plotly)
+fig <- plot_ly(y = ~mydat$Ozone, type = "box", 
+                 name="Ozone")
+fig <- fig %>% add_trace(y = ~mydat$Solar.R, 
+                           name="Solare rate")
+fig <- fig %>% layout(title = "Box plots of solar rate and 
+ozone")
+fig
 
-EnableCodeIndexing: Yes
-UseSpacesForTab: Yes
-NumSpacesForTab: 2
-Encoding: UTF-8
+###################################
+fig5 <- plot_ly(x = c(0,1, 2), y = c(2, 1, 3), type = 'bar') %>%
+layout(title = 'A Figure Displayed with print(fig)',
+           plot_bgcolor='#e5ecf6', 
+           xaxis = list( 
+             zerolinecolor = '#ffff', 
+              zerolinewidth = 2, 
+               gridcolor = 'ffff'), 
+            yaxis = list( 
+              zerolinecolor = '#ffff', 
+               zerolinewidth = 2, 
+               gridcolor = 'ffff'))
+print(fig5)
 
-RnwWeave: Sweave
-LaTeX: pdfLaTeX
+
+
+
+########################
+data(airquality)
+mydat<- data.frame(airquality)
+head(mychat)
+
+library(plotly)
+fig<-plot_ly(data = mydat, x= ~Solar.R, y= ~Temp)
+
+fig 
+
+
+######################
+library(plotly)
+fig<- plot_ly(data=mydat, x=~Solar.R, y= 
+                ~Temp, color= ~Month)
+fig <-fig %>% layout(title= "Scatter plot of 
+                     Solar rate vs. Temperature",
+                     yaxis=list(zeroline=FALSE),
+                     xaxis= list(zeroline = FALSE))
+fig
+#####
+
+
